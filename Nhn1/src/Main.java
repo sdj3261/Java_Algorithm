@@ -1,59 +1,55 @@
 import java.io.*;
-import java.util.StringTokenizer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String[] nk = br.readLine().split(" ");
 
-        int N = Integer.parseInt(br.readLine());
-        String[] op = new String[N];
-        int flag = 0;
-        int id = 1;
-        boolean[] check = new boolean[N+1];
-        check[id] = true;
+        int N = Integer.parseInt(nk[0]);
+        int K = Integer.parseInt(nk[1]);
+        int[] count = new int[21];
+        Integer[][] arr = new Integer[N][];
+        int answer = 0;
 
+        for (int j = 0; j < N; j++) {
+            String[] Frequency = br.readLine().split(" ");
+            List<String> list = new ArrayList<String>();
 
-        for (int i = 0; i < N; i++) {
-            op[i] = br.readLine();
-        }
+            for(int i=0; i<Frequency.length; i++)
+                if(!list.contains(Frequency[i]))
+                    list.add(Frequency[i]);
 
-        for(int i=0; i<op.length; i++)
-        {
-            if(op[i].contains("branch"))
-            {
-                for(int j=1;j<=N; j++)
-                {
-                    if(!check[j]) {
-                        check[j] = true;
-                        flag = 1;
-                        break;
-                    }
-                }
-                if(flag == 0) {
-                    check[++id] = true;
-                }
-            }
-            else
-            {
-                StringTokenizer st = new StringTokenizer(op[i]);
-                String[] merge = new String[2];
-                int j = 0;
-                while(st.hasMoreTokens()){
-                    merge[j] = st.nextToken();
-                    j++;
-                }
-                int merge_num = Integer.parseInt(merge[1]);
-                check[merge_num] = false;
+            arr[j] = new Integer[list.size()];
+            for (int f = 0; f < list.size(); f++) {
+                arr[j][f] = Integer.parseInt(list.get(f));
             }
         }
 
-        for (int i = 1; i <= N; i++) {
-            if(check[i] == true)
-                bw.write(i + " ");
+
+
+
+        for (int i = 1; i <= 20; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                for (int f = 0; f < arr[j].length; f++) {
+                        if (arr[j][f] == i)
+                            count[i] += 1;
+                }
+            }
         }
+        for(int a : count)
+            System.out.printf("%d ", a);
+        Arrays.sort(count);
+        System.out.println();
+
+        for(int i = count.length-1; i >= count.length - K; i--) {
+            answer += count[i];
+        }
+        System.out.println(answer);
         bw.flush();
-
         br.close();
         bw.close();
     }
