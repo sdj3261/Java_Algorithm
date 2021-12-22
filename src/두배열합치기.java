@@ -10,8 +10,9 @@ class Solution20 {
             if (num[p1] < num2[p2])
                 arr.add(num[p1++]);
             else
-                arr.add(num[p2++]);
+                arr.add(num2[p2++]);
         }
+
         while(p1 < num.length)
             arr.add(num[p1++]);
         while(p2 < num2.length)

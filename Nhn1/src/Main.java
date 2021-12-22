@@ -1,7 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -17,7 +16,7 @@ public class Main {
 
         for (int j = 0; j < N; j++) {
             String[] Frequency = br.readLine().split(" ");
-            List<String> list = new ArrayList<String>();
+            ArrayList<String> list = new ArrayList<String>();
 
             for(int i=0; i<Frequency.length; i++)
                 if(!list.contains(Frequency[i]))
