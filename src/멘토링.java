@@ -2,24 +2,30 @@ import java.util.Scanner;
 
 class Solution19 {
     public int solution19(int[][] num) {
-        int answer = 0;
-        for (int i = 1; i <= num[0].length; i++) {
-            for (int j = 1; j <= num[0].length; j++) {
-                int cnt = 0;
-                for (int k = 0; k < num.length; k++) {
-                    int pi = 0, pj = 0;
-                    for (int s = 0; s < num[0].length; s++) {
-                        if (num[k][s] == i) pi = s;
-                        if (num[k][s] == j) pj = s;
-                    }
-                    if (pi < pj)
-                        cnt++;
-                }
-                if (cnt == num.length)
-                    answer++;
-            }
-        }
-        return answer;
+       int answer = 0;
+       int cnt = 0;
+       for(int i=1; i<=num[0].length; i++)
+       {
+           for(int j=1; j<=num[0].length; j++)
+           {
+               cnt = 0;
+               for(int k=0; k<num.length; k++)
+               {
+                   int pi = 0 ,pj = 0;
+                   for(int m=0; m<num[0].length; m++)
+                   {
+                       if(i==j) continue;
+                       if(num[k][m] == i) pi = m;
+                       if(num[k][m] == j) pj = m;
+                   }
+                   if(pi < pj)
+                       cnt += 1;
+               }
+               if(cnt == num.length)
+                   answer+=1;
+           }
+       }
+       return answer;
     }
 }
 public class 멘토링 {
