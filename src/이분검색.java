@@ -18,6 +18,7 @@ public class 이분검색 {
         Arrays.sort(num);
         int lt = 0;
         int rt = N-1;
+
         int answer = 0;
 
         while(lt<=rt) {
@@ -26,11 +27,14 @@ public class 이분검색 {
                 answer = mid + 1;
                 break;
             }
+
             if(num[mid] > M)
                 rt = mid - 1;
-            else lt = mid + 1;
-            lt++;
+            else
+                lt = mid + 1;
         }
+
+        wr.write(String.valueOf(answer));
 
 
 
