@@ -7,7 +7,6 @@ public class 바둑이승차 {
             return;
         if(l == n) {
             answer = Math.max(answer, sum);
-            System.out.println(answer);
         }
         else {
             DFS(l+1, sum + arr[l], arr);
