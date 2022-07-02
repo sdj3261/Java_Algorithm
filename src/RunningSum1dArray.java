@@ -12,6 +12,8 @@ public class RunningSum1dArray {
             return result;
         }
     }
+
+
     public static void main(String[] args) {
         Solution a = new Solution();
         int[] b = {1,1,1,1,1};
